@@ -45,7 +45,13 @@
   "lint-staged": {
     "*": [
       "secretlint",
-      "eslint --fix --ext .js,.ts"
+      "prettier --write"
+    ],
+    "*.js": [
+      "eslint --fix"
+    ],
+    "*.ts": [
+      "eslint --fix"
     ]
   }
 }
