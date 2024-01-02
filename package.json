@@ -5,9 +5,13 @@
   "main": "/dist/index.js",
   "types": "/dist/index.d.ts",
   "scripts": {
+    "eslint": "eslint --ext .js,.ts",
+    "eslint:fix": "eslint --fix --ext .js,.ts",
     "build": "tsc",
     "test": "jest",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "prettier": "prettier .",
+    "prettier:fix": "prettier --write ."
   },
   "repository": {
     "type": "git",
@@ -24,16 +28,30 @@
     "@commitlint/config-conventional": "^18.4.3",
     "@secretlint/secretlint-rule-preset-recommend": "^8.0.0",
     "@types/jest": "^29.5.11",
+    "@typescript-eslint/eslint-plugin": "6.15.0",
+    "@typescript-eslint/parser": "6.15.0",
+    "eslint": "8.56.0",
+    "eslint-config-airbnb": "19.0.4",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.1.1",
     "husky": "^8.0.0",
     "jest": "^29.7.0",
     "lint-staged": "^15.2.0",
+    "prettier": "3.1.1",
     "secretlint": "^8.0.0",
     "ts-jest": "^29.1.1",
     "typescript": "^5.3.3"
   },
   "lint-staged": {
     "*": [
-      "secretlint"
+      "secretlint",
+      "prettier --write"
+    ],
+    "*.js": [
+      "eslint --fix"
+    ],
+    "*.ts": [
+      "eslint --fix"
     ]
   }
 }
